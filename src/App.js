@@ -15,15 +15,13 @@ function App() {
       redirect: "follow",
     };
     if (!collectionAddress.length) {
-      const baseURL =
-        "https://eth-mainnet.alchemyapi.io/v2/-EDYQExUBgWlRHZmtwLOngaVutsR9825/getNFTs/";
+      const baseURL = `${process.env.REACT_APP_ALCHEMY_URL}/getNFTs/`;
       const fetchURL = `${baseURL}?owner=${walletAddress}&contractAddress=${collectionAddress}`;
       nfts = await fetch(fetchURL, requestOptions).then((response) =>
         response.json()
       );
     } else {
-      const baseURL =
-        "https://eth-mainnet.alchemyapi.io/v2/-EDYQExUBgWlRHZmtwLOngaVutsR9825/getNFTs/";
+      const baseURL = `${process.env.REACT_APP_ALCHEMY_URL}/getNFTs/`;
       const fetchURL = `${baseURL}?owner=${walletAddress}&contractAddresses%5B%5D=${collectionAddress}`;
       nfts = await fetch(fetchURL, requestOptions).then((response) =>
         response.json()
@@ -39,8 +37,7 @@ function App() {
       var requestOptions = {
         method: "GET",
       };
-      const baseURL =
-        "https://eth-mainnet.alchemyapi.io/v2/-EDYQExUBgWlRHZmtwLOngaVutsR9825/getNFTsForCollection/";
+      const baseURL = `${process.env.REACT_APP_ALCHEMY_URL}/getNFTsForCollection/`;
       const fetchURL = `${baseURL}?contractAddress=${collectionAddress}&withMetadata=${"true"}`;
       const nfts = await fetch(fetchURL, requestOptions).then((data) =>
         data.json()
